@@ -4,6 +4,7 @@ import main.service.impl.AccountServiceImpl;
 import main.service.impl.ValidatorServiceImpl;
 import main.to.AccountResponse;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class App {
@@ -17,11 +18,16 @@ public class App {
         System.out.println("id: fransisco");
         System.out.println("balance: 100");
         System.out.println();
+        System.out.println("id: florencia");
+        System.out.println("balance: 50");
+        System.out.println();
         System.out.println("1- Deposit");
         System.out.println("2- Custom Deposit");
         System.out.println("3- Withdraw");
         System.out.println("4- Custom Withdraw");
-        System.out.println("5- Exit");
+        System.out.println("5- Transfer");
+        System.out.println("6- Custom Transfer");
+        System.out.println("7- Exit");
         System.out.println();
 
         Scanner scanner = new Scanner(System.in);
@@ -43,6 +49,15 @@ public class App {
                     System.out.println("Please enter the withdrawal amount: ");
                     showResponse(veribankControllerApi.withdrawal("francisco", scanner.nextInt()));
                 }
+                case 5 -> showResponses(veribankControllerApi.transfer("francisco", 10, "florencia"));
+                case 6 -> {
+                    System.out.println("Please enter the transfer origin: ");
+                    String origin = scanner.next();
+                    System.out.println("Please enter the transfer destination: ");
+                    String destination = scanner.next();
+                    System.out.println("Please enter the transfer amount: ");
+                    showResponses(veribankControllerApi.transfer(origin, scanner.nextInt(), destination));
+                }
                 default -> onMenu = false;
             }
         }
@@ -57,6 +72,22 @@ public class App {
         } else {
             System.out.println("Error Occurred");
             System.out.println(accountResponse.getErrorMessage());
+        }
+        System.out.println("--------------------------------------------------------");
+    }
+
+    private static void showResponses(List<AccountResponse> accountResponseList) {
+        System.out.println("--------------------------------------------------------");
+        if (accountResponseList.get(0).getErrorMessage() == null) {
+            System.out.println("Updated accounts");
+            accountResponseList.forEach(accountResponse -> {
+                System.out.println("Id: " + accountResponse.getAccount().getId());
+                System.out.println("Balance: " + accountResponse.getAccount().getBalance());
+                System.out.println();
+            });
+        } else {
+            System.out.println("Error Occurred");
+            System.out.println(accountResponseList.get(0).getErrorMessage());
         }
         System.out.println("--------------------------------------------------------");
     }
