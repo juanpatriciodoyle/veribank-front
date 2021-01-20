@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="veribank">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../veribank/out/artifacts/veribank_jar/veribank.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
