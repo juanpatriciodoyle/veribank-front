@@ -2,10 +2,9 @@
 ![Days](https://img.shields.io/static/v1?label=Working-Days&message=1&color=blue)
 ![Status](https://img.shields.io/static/v1?label=Done&message=100%&color=green)
 
+##Frontend of Veribank
 
-#Frontend of Veribank
-
-## Run the App class and check out the console!
+### Run the App class and check out the console!
 ```java
 public class App {}
 ```
