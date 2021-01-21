@@ -5,9 +5,9 @@
 *See [Challenge](src/resources/Challenge.md) for the details of the tasks.*
 
 
-##Frontend of Veribank
+###Frontend of Veribank
 
-### Run the App class and check out the console!
+#### Run the App class and check out the console!
 ```java
 public class App {}
 ```
